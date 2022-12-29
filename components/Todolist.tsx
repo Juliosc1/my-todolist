@@ -1,9 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
-
-type TodoListProps = {
-
-  taskName: string;
-};
+import Task from "./Task";
+import { TodoListProps } from "./TodoListProps";
 
 function Todolist() {
   const [task, setTask] = useState<string>("");
@@ -14,22 +11,31 @@ function Todolist() {
   };
 
   const addTask = (): void => {
-    const newTask = {taskName: task}
-    setTodoList([...todoList, newTask])
+    const newTask = { taskName: task, taskId: todoList.length === 0 ? 1 : todoList[todoList.length - 1].taskId + 1 };
+    setTodoList([...todoList, newTask]);
     setTask("");
-  }
+  };
 
   return (
     <div className="flex flex-col justify-center items-center">
       <h1>My TodoList</h1>
-      <input type="text" value={task} name='task' onChange={handleTask} placeholder="Enter your task..." className="border" />
+      <input
+        type="text"
+        value={task}
+        name="task"
+        onChange={handleTask}
+        placeholder="Enter your task..."
+        className="border"
+      />
       <button onClick={addTask}>Add Task</button>
 
       <div>
-        {todoList.map((value) => {
+        {todoList.map((task: TodoListProps, key: number) => {
           return (
-            <h1>{value.taskName}</h1>
-          )
+            <div>
+              <Task key={key} task={task}/>
+            </div>
+          );
         })}
       </div>
     </div>
