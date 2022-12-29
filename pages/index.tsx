@@ -1,10 +1,9 @@
 import Todolist from '../components/Todolist'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <>
+    <main className='bg-orange-100 flex item-center justify-center h-[100vh] p-20'>
       <Todolist />
-    </>
+    </main>
   )
 }
