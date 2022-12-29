@@ -20,6 +20,13 @@ function Todolist() {
     setTask("");
   };
 
+  const handleDelete = (taskIdToDelete: number) => {
+    const newTodoList = todoList.filter((task) => {
+      return task.taskId !==taskIdToDelete;
+    })
+    setTodoList(newTodoList);
+  }
+
   return (
     <div className="bg-green-400 flex flex-col items-center w-1/2 h-full border-2 border-green-200 rounded-2xl shadow-2xl">
 
@@ -44,7 +51,7 @@ function Todolist() {
         {todoList.map((task: TodoListProps, key: number) => {
           return (
             <div className="">
-              <Task key={key} task={task} />
+              <Task key={key} task={task} deleteTask={handleDelete}/>
             </div>
           );
         })}
