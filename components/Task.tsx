@@ -1,5 +1,6 @@
 import React from 'react'
 import { TodoListProps } from './TodoListProps';
+import { TrashIcon } from '@heroicons/react/outline';
 
 type Props = {
   task: TodoListProps;
@@ -13,8 +14,10 @@ const Task = ({task, deleteTask}: Props) => {
         <p className='font-semibold pr-2 hover:'>{task.taskId}.</p>
         <p className='font-semibold'>{task.taskName}</p>
       </div>
-      <div className='flex justify-end w-20'>
-        <button onClick={() => deleteTask(task.taskId)} className='bg-red-400 rounded-xl h-8 w-16 text-white hover:bg-red-500'>Delete</button>
+      <div className='flex justify-end w-1/5'>
+        <button onClick={() => deleteTask(task.taskId)} className='bg-red-400 rounded-xl h-8 w-auto px-2 text-white hover:bg-red-500'>
+          <TrashIcon className="h-6" />
+        </button>
       </div>
     </div>
   )

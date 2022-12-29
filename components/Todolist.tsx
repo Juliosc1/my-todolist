@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import Task from "./Task";
 import { TodoListProps } from "./TodoListProps";
+import { PlusCircleIcon, FolderIcon } from "@heroicons/react/outline";
 
 function Todolist() {
   const [task, setTask] = useState<string>("");
@@ -28,26 +29,33 @@ function Todolist() {
   }
 
   return (
-    <div className="bg-green-400 flex flex-col items-center w-1/2 h-full border-2 border-green-200 rounded-2xl shadow-2xl">
+    <div className="bg-green-400 flex flex-col items-center w-full h-full border-2 border-green-200 rounded-2xl shadow-2xl">
 
       <div className="bg-green-500 flex flex-col items-center justify-center w-full rounded-t-2xl p-5">
-        <h1 className="text-2xl font-bold pb-5 text-white shadow-black drop-shadow-2xl">
-          My TodoList
-        </h1>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-4 pb-5">
+          <h1 className="text-3xl font-bold text-white shadow-black drop-shadow-2xl">
+            My TodoList
+          </h1>
+          <FolderIcon className="h-8 mt-1 text-white" />
+        </div>
+        <div className="flex justify-center w-full gap-2">
           <input
             type="text"
             value={task}
             name="task"
             onChange={handleTask}
             placeholder="Enter your task..."
-            className="flex justify-center h-10 w-80 rounded-full p-2 outline-none"
+            maxLength={20}
+            className="flex justify-center h-10 w-72 rounded-full p-2 outline-none"
           />
-          <button onClick={addTask} className="bg-green-600 rounded-2xl px-2 text-white font-semibold border-green-700 border hover:bg-green-700" >Add Task</button>
+          <button onClick={addTask} className="bg-green-600 flex items-center gap-2 rounded-2xl px-2 text-white font-semibold border-green-700 border hover:bg-green-700" >
+            <p className="hidden sm:flex">Add Task</p>
+            <PlusCircleIcon className="h-6"/>
+          </button>
         </div>
       </div>
 
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full overflow-auto">
         {todoList.map((task: TodoListProps, key: number) => {
           return (
             <div className="">
