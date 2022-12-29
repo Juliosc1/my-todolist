@@ -1,9 +1,10 @@
+import Todolist from '../components/Todolist'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
     <>
-      <h1>My Todolist</h1>
+      <Todolist />
     </>
   )
 }
