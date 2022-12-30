@@ -16,6 +16,7 @@ function Todolist() {
       taskName: task,
       taskId:
         todoList.length === 0 ? 1 : todoList[todoList.length - 1].taskId + 1,
+      taskComplete: false,
     };
     setTodoList([...todoList, newTask]);
     setTask("");
@@ -26,6 +27,17 @@ function Todolist() {
       return task.taskId !==taskIdToDelete;
     })
     setTodoList(newTodoList);
+  }
+
+  const handleCompleteTask = (id: number) => {
+    const updateTodolist = todoList.map((task) => {
+      if (task.taskId === id) {
+        return {...task, taskComplete: true};
+      } else {
+        return task;
+      }
+    })
+    setTodoList(updateTodolist);
   }
 
   return (
@@ -59,7 +71,7 @@ function Todolist() {
         {todoList.map((task: TodoListProps, key: number) => {
           return (
             <div className="">
-              <Task key={key} task={task} deleteTask={handleDelete}/>
+              <Task key={key} task={task} deleteTask={handleDelete} completeTask={handleCompleteTask} />
             </div>
           );
         })}
