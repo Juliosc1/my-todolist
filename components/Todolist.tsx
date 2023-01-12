@@ -41,9 +41,9 @@ function Todolist() {
   }
 
   return (
-    <div className="bg-green-400 flex flex-col items-center w-full h-full border-2 border-green-200 rounded-2xl shadow-2xl">
+    <div className="bg-neutral-800 flex flex-col items-center w-full h-full border-2 border-white rounded-2xl shadow-2xl">
 
-      <div className="bg-green-500 flex flex-col items-center justify-center w-full rounded-t-2xl p-5">
+      <div className="flex flex-col items-center justify-center w-full rounded-t-2xl p-5">
         <div className="flex items-center gap-4 pb-5">
           <h1 className="text-3xl font-bold text-white shadow-black drop-shadow-2xl">
             My TodoList
@@ -70,7 +70,7 @@ function Todolist() {
       <div className="flex flex-col w-full overflow-auto">
         {todoList.map((task: TodoListProps, key: number) => {
           return (
-            <div className="">
+            <div>
               <Task key={key} task={task} deleteTask={handleDelete} completeTask={handleCompleteTask} />
             </div>
           );
